@@ -4,10 +4,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state:{
-      PostBarID:'1',
+      PostBarID:'wp7',
       PostBarList:[],
-      Loading:1,
-      multipleSelection:[]
+      Loading:3,
+      multipleSelection:[],
+      reflushFlag:false,
   },mutations:{
       setPostBarID(state,PostBarID){
         this.state.PostBarID = PostBarID
@@ -19,10 +20,14 @@ const store = new Vuex.Store({
           this.state.Loading = this.state.Loading+1
         },
         setLoadingLow(){
-            this.state.Loading = this.state.Loading-+1
+            this.state.Loading = this.state.Loading-1
         },
         setMultipleSelection(state,multipleSelection){
           this.state.multipleSelection = multipleSelection
+        },setReflushFlagTrue(){
+          this.state.reflushFlag = true;
+        },setReflushFlagFalse(){
+          this.state.reflushFlag = false;
         }
   }
 })

@@ -4,8 +4,10 @@
       <el-header><PageHeader></PageHeader></el-header>
       <el-container>
         <el-aside width="200px"><PageAside></PageAside></el-aside>
-        <el-main v-loading="Loading"><PageMain></PageMain></el-main>
+        <el-main ><PageMain></PageMain></el-main>
+
       </el-container>
+      <el-footer>Copyright@YUHUIWU 赣ICP备2021002196号-1</el-footer>
     </el-container>
   </div>
 
@@ -23,7 +25,7 @@ export default {
   components: {PageMain,PageHeader,PageAside},
   data(){
     return{
-      LoadingNum:1,
+
       // Loading: false
     }
 
@@ -31,35 +33,31 @@ export default {
   methods:{
 
   },computed:{
-    Loading(){
-      return this.$store.state.Loading !== this.LoadingNum;
-    }
+
   },
 
   watch:{
 
   },created() {
-      this.LoadingNum = this.$store.state.Loading
+
   }
 }
 </script>
 
 <style scoped>
 @import url("//unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
-/*.el-header, .el-footer {*/
-/*  background-color: #B3C0D1;*/
-/*  color: #333;*/
-/*  text-align: center;*/
-/*  line-height: 60px;*/
-/*}*/
+.el-header, .el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
 
-
-
-/*.el-main {*/
-/*  background-color: #E9EEF3;*/
-/*  color: #333;*/
-/*  text-align: center;*/
-/*  line-height: 160px;*/
-/*  height: 600px;*/
-/*}*/
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
+  height: 600px;
+}
 </style>

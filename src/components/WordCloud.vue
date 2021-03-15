@@ -1,17 +1,14 @@
 <template>
-  <div class="hello">
-    <div id="app">
-      <wordcloud
-          :data="defaultWords"
-          nameKey="name"
-          valueKey="value"
-          :color="myColors"
-          :showTooltip="false"
-          :wordClick="wordClickHandler">
-      </wordcloud>
-    </div>
-  </div>
+  <wordcloud
+      :data="defaultWords"
+      nameKey="name"
+      valueKey="value"
+      :color="myColors"
+      :showTooltip="false"
+      :wordClick="wordClickHandler">
+  </wordcloud>
 </template>
+
 <script>
 import wordcloud from 'vue-wordcloud'
 import {Chart} from "../request/api";
@@ -49,5 +46,16 @@ export default {
       return this.$store.state.PostBarID
     }
   },
+  mounted() {
+    this.GetChartData()
+  }
 }
 </script>
+<style>
+#WordCloud{
+  display: inline-block;
+  width: 600px;
+  height: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+}
+</style>

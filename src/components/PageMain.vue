@@ -1,21 +1,24 @@
 <template>
 <div id="main">
-<!--  <PosOrNeg :PostBarID="PostBarID"  ></PosOrNeg>-->
-<!--  <UserLevel :PostBarID="PostBarID" ></UserLevel>-->
-  <Test :PostBarID = "PostBarID"></Test>
+  <DataChart></DataChart>
+  <DataPanel ></DataPanel>
+  <DataPanel2 ></DataPanel2>
+
 </div>
 </template>
 
 <script>
 
-// import PosOrNeg from "@/components/PosOrNeg";
 import Store from '../store/store'
-// import UserLevel from "@/components/UserLevel";
-import Test from "@/components/test";
-
+import DataPanel from '../components/DataPanel'
+import DataPanel2 from '../components/DataPanel2'
+//
+import DataChart from "../components/DataChart";
+// import test from '../components/test'
+// import Time from '../components/Time'
 export default {
 name: "main",
-  components:{Test},
+  components:{DataChart ,DataPanel,DataPanel2},
   store:Store,
   data(){
   return{
@@ -23,20 +26,10 @@ name: "main",
   }
   },
   computed:{
-       PostBarID(){
-         return this.$store.state.PostBarID
-       }
-  },watch:{
 
   }
 }
 </script>
 
 <style scoped>
-
-/*.test{*/
-/*  display: inline-block;*/
-/*  width: 400px;*/
-/*  height: 300px;*/
-/*}*/
 </style>

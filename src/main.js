@@ -1,18 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Axios from 'axios'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import './plugins/element.js'
 import Vcharts from 'v-charts'
+import route from "./route/route";
+import VueWordCloud from 'vuewordcloud';
+Vue.component(VueWordCloud)
 Vue.use(Vcharts)
-Vue.config.productionTip = false
 Vue.use(Axios)
 Vue.prototype.$axios = Axios
-Vue.use(ElementUI)
-
 Vue.config.productionTip = false
 
 
 new Vue({
-  render: h => h(App),
+  render: h => h(App),route
 }).$mount('#app')

@@ -1,16 +1,16 @@
 <template>
 <div id="PageHeader">
-  <el-button v-on:click="drawer = true" type="primary"  plain
-             >添加吧</el-button>
-  <el-drawer
-      title="我是标题"
-      :visible.sync="drawer"
-      :with-header="false"
-      size="20%"
-  >
-  <PostBar></PostBar>
-  </el-drawer>
-  <el-button v-on:click=" openSpider" type="primary"  plain
+<!--  <el-button v-on:click="drawer = true" type="primary"  plain-->
+<!--             >添加吧</el-button>-->
+<!--  <el-drawer-->
+<!--      title="我是标题"-->
+<!--      :visible.sync="drawer"-->
+<!--      :with-header="false"-->
+<!--      size="20%"-->
+<!--  >-->
+<!--  <PostBar v-on:PostBarSave="drawer=false"></PostBar>-->
+<!--  </el-drawer>-->
+  <el-button v-on:click="openSpider" type="primary"  plain
              v-bind:disabled="Spider">启动爬虫</el-button>
   <el-button v-on:click="StartTrainModel" type="primary"  plain
              v-bind:disabled="Train">启动数据分析</el-button>
@@ -19,11 +19,8 @@
 
 <script>
 
-import {GetFlag,Start} from "@/request/api";
-import PostBar from "@/components/PostBar";
+import {GetFlag,Spider,DataModel} from "@/request/api";
 
-
-// import Button from 'element-ui'
 export default {
 name: "PageHeader",
   data() {
@@ -35,10 +32,6 @@ name: "PageHeader",
     dateInterval: 60 * 1000,
   }
   },components:{
-    PostBar
-
-
-
 
   },methods:{
       GetBool:async function (Config){
@@ -61,7 +54,7 @@ name: "PageHeader",
         );
     }
         this.Train=true
-        Start("TrainModel")
+        DataModel()
         },
     openSpider(){
       const msg = "爬虫目标："+this.$store.state.multipleSelection.toString()
@@ -106,7 +99,7 @@ name: "PageHeader",
           } ,
          );
           this.Spider=true
-          Start("Spider",this.$store.state.multipleSelection)
+        Spider(this.$store.state.multipleSelection)
         }
 
 

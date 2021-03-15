@@ -1,7 +1,8 @@
 import axios from 'axios';
-const baseUrl = "http://127.0.0.1:5000/"
+
+// const baseUrl = "http://127.0.0.1:5000/"
 // const baseUrl = "/api/"
-// const baseUrl = "http://47.98.108.37/api/"
+const baseUrl = "http://47.98.108.37/api/"
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 

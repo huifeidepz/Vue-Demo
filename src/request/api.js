@@ -1,27 +1,17 @@
 import {get, post} from './http'
 
 export  function GetFlag(Config) {
-   return get("GetFlag", {"Config": Config})
-
-
-
-  //  .then(res => {
-  //     let bol = res.data["ValueConfig"];
-  //     return bol
-  //     console.log(bol)
-  //   }
-  // )
+   return get("Flag", {"Config": Config})
 }
 export function Chart(Chart,PostBarID){
-  return get(Chart+"Chart",{"PostBarID":PostBarID})
+  return get("Chart/"+Chart,{"PostBarID":PostBarID})
 }
-export function Start(Name,PostBarIDs){
-    if (Name==="Spider"){
-        return  post("Start",{"Name":Name,"PostBarIDs":PostBarIDs})
-    }else if(Name==="TrainModel"){
-        return  get("Start",{"Name":Name})
-    }
 
+export function Spider(PostBarIDs){
+    return  post("Spider",{"PostBarIDs":PostBarIDs})
+}
+export function DataModel(){
+    return get("DataModel")
 }
 export function PostBarList(){
     return get("PostBarList")
@@ -30,6 +20,16 @@ export function PostBarFlag(){
     return get("PostBarIDs" )
 }
 
-export function PostBar(PostBar){
-    return get("PostBar",{"PostBar":PostBar})
+export function PostBar(PostBar,methods){
+    if (methods=="post"){
+        return post("PostBar",{"PostBar":PostBar})
+    }else if (methods=="get"){
+        return get("PostBar",{"PostBar":PostBar})
+    }
+}
+export function StatisticsData(){
+    return get("TotalData")
+}
+export function StatisticsDataByPostBar(PostBarID){
+    return get("PostBarData",{"PostBarID":PostBarID})
 }

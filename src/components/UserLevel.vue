@@ -1,22 +1,19 @@
 <template>
-  <div id="PosOrNeg"> <VeLine :data="chartData" :settings="chartSettings" ></VeLine></div>
-
+<div id="UserLevel">
+  <VeLine :data="chartData" ></VeLine>
+</div>
 </template>
 
 <script>
 import Store from '../store/store'
 import {Chart} from "@/request/api";
-import  VeLine from 'v-charts/lib/histogram.common'
-export default {
-  name:'PosOrNeg',
-  store:Store,
+import  VeLine from 'v-charts/lib/line.common.min'
 
+export default {
+name: "UserLevel",
+  store:Store,
   data: function () {
     return {
-      chartSettings:{
-        yAxisName: ['评论数'],
-        xAxisName:['情绪值']
-      },
       chartData: {
         columns: [],
         rows: []
@@ -26,11 +23,9 @@ export default {
   components: { VeLine },
   methods:{
     GetChartData:async function(){
-
-      const Data = await Chart("PosOrNeg",this.PostBarID)
+      const Data = await Chart("UserLevel",this.PostBarID)
       this.chartData.columns = Data.data["columns"]
       this.chartData.rows = Data.data["rows"]
-
 
     }
   },
@@ -40,35 +35,26 @@ export default {
 //     }
 // },
   watch:{
-    // reflushFlag:function (){
-    //
-    //   if (this.reflushFlag)
-    //     this.GetChartData()
-    //   this.$store.commit("setReflushFlagFalse")
-    //   console.log(this.$store.state.reflushFlag)
-    // }
     PostBarID:function (){
-      this.GetChartData()
+      if (this.PostBarID!=="1")
+        this.GetChartData()
     }
   },
   computed:{
     PostBarID(){
       return this.$store.state.PostBarID
-    },
-  //   reflushFlag(){
-  //   return this.$store.state.reflushFlag
-  // }
+    }
   },
   mounted() {
-    this.GetChartData();
+    this.GetChartData()
   }
 }
-
-
 </script>
-<style>
-#PosOrNeg{
+
+<style scoped>
+#UserLevel{
   display: inline-block;
+  margin: 10px;
   width: 600px;
   height: 600px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
