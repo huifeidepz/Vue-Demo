@@ -5,7 +5,7 @@
       valueKey="value"
       :color="myColors"
       :showTooltip="false"
-      :wordClick="wordClickHandler">
+      >
   </wordcloud>
 </template>
 
@@ -18,15 +18,12 @@ export default {
     wordcloud
   },
   methods: {
-    wordClickHandler(name, value, vm) {
-      console.log('wordClickHandler', name, value, vm);
-    },GetChartData:async function(){
+    GetChartData:async function(){
       console.log(this.PostBarID)
       const Data = await Chart("WordCloud",this.PostBarID)
-
       this.defaultWords =  Data.data["rows"]
 
-      console.log(this.defaultWords)
+
     }
   },
   data() {

@@ -47,8 +47,8 @@
 <script>
 
 import store from "../store/store";
-import {PostBarList} from '@/request/api'
-import PostBar from "@/components/PostBar";
+import {PostBarList} from '../request/api'
+import PostBar from "../components/PostBar";
 export default {
   name:"PostBarList",components:{PostBar},
   data () {
@@ -57,7 +57,7 @@ export default {
       PostBars:[],
       CurrPage:1,
       pageSize:10,
-      reflush:true,
+
       CurrtData:[],
       multipleSelection:[],
       checkList:[],

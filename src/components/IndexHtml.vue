@@ -45,7 +45,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("//unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
 .el-header, .el-footer {
   background-color: #B3C0D1;
   color: #333;
