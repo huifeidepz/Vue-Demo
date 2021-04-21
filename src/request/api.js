@@ -33,3 +33,6 @@ export function StatisticsData(){
 export function StatisticsDataByPostBar(PostBarID){
     return get("PostBarData",{"PostBarID":PostBarID})
 }
+export function SystemLog(){
+    return get("SystemLog")
+}

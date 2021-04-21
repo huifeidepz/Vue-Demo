@@ -2,6 +2,7 @@
   <div id="app">
   <IndexHtml></IndexHtml>
 <!--    <test></test>-->
+<!--    <SystemLog></SystemLog>-->
   </div>
 </template>
 
@@ -9,14 +10,15 @@
 
 
 import IndexHtml from "@/components/IndexHtml";
-
+// import SystemLog from "./components/SystemLog";
 // import test from "@/components/test";
 
 export default {
   name: 'App',
   components: {
-    IndexHtml
+    // SystemLog
     // test
+    IndexHtml
   }
 }
 </script>

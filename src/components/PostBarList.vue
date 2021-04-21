@@ -38,7 +38,7 @@
       @current-change="handleCurrentChange"
       :current-page="CurrPage"
       :page-size="pageSize"
-      :key="reflush"
+
       >
     </el-pagination>
     </div>

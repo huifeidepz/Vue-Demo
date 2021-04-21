@@ -1,26 +1,27 @@
 <template>
 <div id="PageHeader">
-<!--  <el-button v-on:click="drawer = true" type="primary"  plain-->
-<!--             >添加吧</el-button>-->
-<!--  <el-drawer-->
-<!--      title="我是标题"-->
-<!--      :visible.sync="drawer"-->
-<!--      :with-header="false"-->
-<!--      size="20%"-->
-<!--  >-->
-<!--  <PostBar v-on:PostBarSave="drawer=false"></PostBar>-->
-<!--  </el-drawer>-->
+
   <el-button v-on:click="openSpider" type="primary"  plain
              v-bind:disabled="Spider">启动爬虫</el-button>
   <el-button v-on:click="StartTrainModel" type="primary"  plain
              v-bind:disabled="Train">启动数据分析</el-button>
+  <el-button v-on:click="drawer=true" type="primary"  plain
+             v-bind:disabled="Train">运行日志</el-button>
+  <el-drawer
+      title="系统日志"
+      :visible.sync="drawer"
+      :with-header="false"
+      size="40%"
+  >
+  <SystemLog></SystemLog>
+  </el-drawer>
 </div>
 </template>
 
 <script>
 
 import {GetFlag,Spider,DataModel} from "@/request/api";
-
+import SystemLog from "./SystemLog";
 export default {
 name: "PageHeader",
   data() {
@@ -32,7 +33,7 @@ name: "PageHeader",
     dateInterval: 60 * 1000,
   }
   },components:{
-
+    SystemLog
   },methods:{
       GetBool:async function (Config){
         const bol = await GetFlag(Config)
